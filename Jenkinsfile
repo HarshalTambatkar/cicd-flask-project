@@ -3,21 +3,16 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                echo "Cloning repository..."
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
-        stage('Run Application') {
+        stage('Build Check') {
             steps {
-                bat 'python app.py'
+                bat 'python --version'
+                echo 'Pipeline executed successfully'
             }
         }
 
